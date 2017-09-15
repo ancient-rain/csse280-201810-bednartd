@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tables</title>
+    <link href="table.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Cups</th>
+            <th scope="col">Type of Coffee</th>
+            <th scope="col">Sugar?</th>
+        </tr>
+        <tr>
+            <td>T. Sexton</td>
+            <td>10</td>
+            <td>Espresso</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>J. Dinnen</td>
+            <td>5</td>
+            <td>Decaf</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>A. Sophia</td>
+            <td colspan="3">Not Available</td>
+        </tr>
+    </table>
+    <br>
+    <table id="step-3-0">
+        <tr>
+            <td>1</td>
+            <td rowspan="2">2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <br>
+    <table id="step-3-1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td colspan="2">4</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <br>
+    <table id="expense-table" cellspacing="0" cellpadding="0">
+        <caption>Travel Expense Report</caption>
+        <tr>
+            <th class="row-col-solid-border"></th>
+            <th class="row-solid-border" scope="col">Meals</th>
+            <th class="row-solid-border" scope="col">Hotels</th>
+            <th class="row-solid-col-dotted-border" scope="col">Transport</th>
+            <td class="row-solid-border">subtotals</td>
+        </tr>
+        <tr>
+            <th class="col-solid-border" scope="row">San Jose</th>
+            <td class="col-dotted-border" colspan="3"></td>
+        </tr>
+        <tr>
+            <td class="col-solid-border">25-Aug-97</td>
+            <td>37.74</td>
+            <td>112.00</td>
+            <td class="col-dotted-border">45.00</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="row-dotted-col-solid-border">26-Aug-97</td>
+            <td class="row-dotted-border">27.28</td>
+            <td class="row-dotted-border">112.00</td>
+            <td class="row-col-dotted-border">45.00</td>
+            <td class="row-dotted-border"></td>
+        </tr>
+        <tr class="subtotal">
+            <td class="row-col-solid-border">subtotals</td>
+            <td class="row-solid-border">65.02</td>
+            <td class="row-solid-border">224.00</td>
+            <td class="row-solid-col-dotted-border">90.00</td>
+            <td class="row-solid-border">379.02</td>
+        </tr>
+
+
+        <tr>
+            <th class="col-solid-border" scope="row">Seattle</th>
+            <td class="col-dotted-border" colspan="3"></td>
+        </tr>
+        <tr>
+            <td class="col-solid-border">27-Aug-97</td>
+            <td>96.25</td>
+            <td>109.00</td>
+            <td class="col-dotted-border">36.00</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="row-dotted-col-solid-border">28-Aug-97</td>
+            <td class="row-dotted-border">35.00</td>
+            <td class="row-dotted-border">109.00</td>
+            <td class="row-col-dotted-border">36.00</td>
+            <td class="row-dotted-border"></td>
+        </tr>
+        <tr class="subtotal">
+            <td class="row-col-solid-border">subtotals</td>
+            <td class="row-solid-border">131.25</td>
+            <td class="row-solid-border">218.00</td>
+            <td class="row-solid-col-dotted-border">72.00</td>
+            <td class="row-solid-border">421.25</td>
+        </tr>
+        <tr class="total">
+            <th class="col-solid-border" scope="row">Totals</th>
+            <td>196.27</td>
+            <td>442.00</td>
+            <td class="col-dotted-border">162.00</td>
+            <th scope="row">800.27</td>
+        </tr>
+    </table>
+    <br>
+    <table id="courses-table" cellspacing="0" cellpadding="0">
+        <tr>
+            <th scope="row" colspan="5">Community Courses -- Bath Autumn 1997</th>
+        </tr>
+        <tr>
+            <th class="name" scope="row">Course Name</th>
+            <th class="tutor" scope="row">Course Tutor</th>
+            <th class="summary" scope="row">Summary</th>
+            <th class="code" scope="row">Code</th>
+            <th class="fee" scope="row">Fee</th>
+        </tr>
+        <tr>
+            <td class="name">After the Civil War</td>
+            <td class="tutor">Dr. John Wroughton</td>
+            <td class="summary">The course will examine the turbulent years in England after 1646. <em>6 weekly meetings starting Monday 13th October</em>.</td>
+            <td class="code">H27</td>
+            <td class="fee">£32</td>
+        </tr>
+        <tr>
+            <td class="name">An Introduction to Anglo-Saxon England</td>
+            <td class="tutor">Mark Cottle</td>
+            <td class="summary">One day course introducing the early medieval period reconstruction the Anglo-Saxons and their society. <em>Saturday 18th October</em>.</td>
+            <td class="code">H28</td>
+            <td class="fee">£18</td>
+        </tr>
+        <tr>
+            <td class="name">The Glory that was Greece</td>
+            <td class="tutor">Valerie Lorenz</td>
+            <td class="summary">Birthplace of democracy, philosophy, heartland of theater, home of argument. The Romans may have done it but the Greeks did it first. <em>Saturday day school 25th October 1997</em></td>
+            <td class="code">H30</td>
+            <td class="fee">£18</td>
+        </tr>
+    </table>
+</body>
+
+</html>

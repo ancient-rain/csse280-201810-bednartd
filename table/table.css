@@ -1,0 +1,84 @@
+#expense-table {
+    border: 2px solid black;
+    text-align: left;
+}
+
+#expense-table td,
+#expense-table th {
+    width: 80px;
+    padding: 1px 10px;
+}
+
+.subtotal {
+    background-color: #c0c0c0;
+}
+
+.total {
+    background-color: #00FFFF;
+}
+
+caption {
+    padding-bottom: 10px;
+}
+
+.row-solid-border {
+    border-bottom: 1px solid black;
+}
+
+.row-dotted-border {
+    border-bottom: 1px dotted black;
+}
+
+.col-solid-border {
+    border-right: 1px solid black;
+}
+
+.col-dotted-border {
+    border-right: 1px dotted black;
+}
+
+.row-col-solid-border {
+    border: 1px solid black;
+    border-left: none;
+    border-top: none;
+}
+
+.row-col-dotted-border {
+    border: 1px dotted black;
+    border-left: none;
+    border-top: none;
+}
+
+.row-solid-col-dotted-border {
+    border-bottom: 1px solid black;
+    border-right: 1px dotted black;
+}
+
+.row-dotted-col-solid-border {
+    border-bottom: 1px dotted black;
+    border-right: 1px solid black;
+}
+
+#courses-table {
+    border: 1px solid black;
+    background-color: #e4e4e4;
+    width: 700px;
+}
+
+#courses-table th,
+#courses-table td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.name {
+    width: 160px;
+}
+
+.tutor {
+    width: 120px;
+}
+
+.summary {
+    width: 280px;
+}
