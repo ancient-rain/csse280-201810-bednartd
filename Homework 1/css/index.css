@@ -1,0 +1,27 @@
+body {
+    background-image: url("../food.jpg");
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #444;
+}
+
+a {
+    text-decoration: none;
+}
+
+.meal {
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 3px;
+    margin-bottom: 50px;
+}
+
+.foodlist {
+    text-align: left;
+    display: inline-block;
+}
+
+.dish {
+    text-align: center;
+}
