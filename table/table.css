@@ -1,3 +1,30 @@
+#example {
+    border: 1px solid black;
+}
+
+#example th,
+#example td {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+#step-3-0 {
+    border: 1px solid black;
+}
+
+#step-3-0 td {
+    border: 1px solid black;
+    padding: 3px;
+}
+
+#step-3-1 {
+    border: 1px solid black;
+}
+#step-3-1 td {
+    border: 1px solid black;
+    padding: 3px;
+}
+
 .align-top {
     vertical-align: top;
 }
