@@ -1,4 +1,9 @@
 /* All your CSS declarations should be declared here */
-body {
-	
+table,
+td {
+    border: 1px double black;
+}
+
+caption b {
+    font-size: 50px;
 }
