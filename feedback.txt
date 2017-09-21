@@ -1,0 +1,7 @@
+username: bednartd
+
+20/24
+
+-1 fail to use <pre> tag for copyright
+-1 fail to use <blockquote> for quotation
+-2 both html files are not valid
