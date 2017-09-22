@@ -70,7 +70,7 @@ function sumPair(numbers, target) {
 }
 
 function move(array, from, to) {
-    if (from >= 0 || to >= 0) {
+    if (from >= 0 && to >= 0) {
         const tempFrom = array[from];
         array[from] = array[to];
         array[to] = tempFrom;
