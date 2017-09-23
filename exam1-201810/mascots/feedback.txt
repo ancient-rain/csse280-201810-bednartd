@@ -1,0 +1,5 @@
+7.5/11
+
+-1 need title in head
+-1/2 don't use <b>, use CSS instead instead
+-2 don't use cellpadding or cellspacing for table, use CSS instead
