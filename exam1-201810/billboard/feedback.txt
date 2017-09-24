@@ -1,0 +1,6 @@
+18/24
+
+-2 Bordered area is not 35em wide
+-1 All songs are italicized, not just the first one
+-2 No "stack of records" background on 1965 songs
+-1 Changed the color of "1964-1967" text. Should be black with drop shadow
