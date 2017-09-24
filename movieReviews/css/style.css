@@ -1,0 +1,129 @@
+/* A simple assignment using css styling techniques */
+
+body {
+    background-image: url(../images/background.png);
+    font-size: 8px;
+    font-family: Verdana, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    background-image: url(../images/bannerbg.png);
+}
+
+.movie-title {
+    font-weight: bold;
+    font-size: 24px;
+    font-family: Tahoma, Verdana, sans-serif;
+    text-shadow: 3px 3px 3px #999999;
+    text-align: center;
+}
+
+.content {
+    width: 800px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    border: 4px solid gray;
+    overflow: hidden;
+}
+
+.critic-review {
+    display: inline-block;
+    background-image: url(../images/rbg.png);
+    width: 550px;
+    font-weight: bold;
+    font-size: 48px;
+    color: red;
+    height: 83px;
+    line-height: 83px;
+}
+
+.critic-review img {
+    float: left;
+}
+
+.movie-review {
+    float: left;
+}
+
+.movie-info {
+    width: 250px;
+    float: right;
+    background-color: #a2b964;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    padding-bottom: 1%;
+}
+
+.movie-info dl {
+    margin: 10px;
+}
+
+.movie-info dt {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.movie-info dd ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.movie-comments {
+    display: table;
+}
+
+.comment {
+    width: 47%;
+    margin: 2% 1.5%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.review {
+    font-weight: bold;
+    font-size: 8px;
+    background-color: #e8dc9b;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+
+.review p {
+    display: inline-block;
+    margin: 8px;
+}
+
+.review p img {
+    margin-right: 5px;
+    float: left;
+}
+
+.reviewer {
+    margin-top: 20px;
+    display: flex;
+}
+
+.reviwer img {
+    float: left;
+    margin-right: 5px;
+}
+
+.footer {
+    background-color: #a2b964;
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+}
+
+.sources {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+.sources a img {
+    opacity: 0.5;
+}
