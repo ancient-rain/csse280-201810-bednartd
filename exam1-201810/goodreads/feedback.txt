@@ -1,0 +1,6 @@
+username: bednartd
+
+13/15
+
+-1 content is not horizontally centered
+-1 navbar border color doesn't show
