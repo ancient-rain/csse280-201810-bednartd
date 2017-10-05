@@ -1,0 +1,6 @@
+username: bednartd
+
+23.4/24
+
+-0.3 publications are not in italic
+-0.3 missing favicon
