@@ -56,14 +56,10 @@
         const moves = getRandomInt(boardSize, tiles.length);
 
         for (let i = 0; i < moves; i++) {
-            const first = getRandomInt(0, tiles.length);
-            let second = getRandomInt(0, tiles.length);
+            const blankIndex = getBlankIndex();
+            const move = randomMove(blankIndex);
 
-            while (second == first) {
-                second = getRandomInt(0, tiles.length);
-            }
-
-            swapDomElements(tiles[first], tiles[second]);
+            swapDomElements(tiles[move], tiles[blankIndex]);
         }
     }
 
@@ -72,6 +68,38 @@
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    // checks to see that the user clicked a valid tile
+    function randomMove(blankIndex) {
+        const aboveIndex = blankIndex - boardSize;
+        const belowIndex = blankIndex + parseInt(boardSize);
+        const leftIndex = blankIndex - 1;
+        const rightIndex= blankIndex + 1;
+
+        const aboveEle = getTile(aboveIndex);
+        const belowEle = getTile(belowIndex);
+        const leftEle = getTile(leftIndex);
+        const rightEle = getTile(rightIndex);
+        let moveList = [];
+
+        if (aboveEle !== -1) {
+            moveList.push(aboveIndex);
+        }
+
+        if (belowEle !== -1) {
+            moveList.push(belowIndex);
+        }
+
+        if (leftEle !== -1) {
+            moveList.push(leftIndex);   
+        }
+
+        if (rightEle !== -1) {
+            moveList.push(rightIndex);
+        }
+
+        return getRandomInt(0, moveList.length);
     }
 
     // adds the css elements needed to the tile spans
@@ -187,7 +215,7 @@
         if (index > 0 || index < board.length) {
             return board[index];
         } else {
-            return undefined;
+            return -1;
         }
     }
 
