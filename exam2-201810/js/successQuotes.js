@@ -143,7 +143,19 @@ function displayShortestQuote() {
  * function to determine when this function will run.
  */
 function displayQuotesWithSubstring(thisString) {
-    // TODO: complete this function. 
+    // DONE: complete this function. 
+    let quotesContainer = document.getElementById('author-quotes-container');   
+
+    quotesContainer = $('#author-quotes-container').empty();
+
+    for (let i = 0; i < ALL_QUOTES.length; i++) {
+        const quote = ALL_QUOTES[i].quote;
+        const index = quote.indexOf(thisString);
+
+        if (index > -1) {
+            displayQuote(quotesContainer, ALL_QUOTES[i]);
+        }
+    }
 }
 
 /**
