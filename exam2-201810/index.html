@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Famous Quotes about success</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<h1>
+		Famous Quotes About Success
+	</h1>
+
+	<img src="images/rhit.jpeg" alt="Rose-Hulman Institute of Technology " width="472px">
+	<img src="images/rhit2.jpeg" alt="RHIT" width="472px">
+
+	<p class="success-caption-text">
+		The engineering college continues to graduate extraordinary students who fare well in the employment arena.  
+		More and more companies are getting to know aout Rose-Hulman and are seeking to make their presence felt on
+		campus.
+	</p>
+
+	<form id="success-quotes-form">
+		<fieldset>
+			<legend>Quotes to display</legend>
+
+			<label for="choices">
+				Please select the quotes you would like to display: 
+				(These <strong>Radio buttons</strong> trumpt the search box.)
+			</label>
+			<input type="radio" name="choices" value="all" checked="checked" /> All Quotes
+			<input type="radio" name="choices" value="short" /> Shortest Quote
+			<input type="radio" name="choices" value="unique" /> Quote with most unique words
+			<input type="radio" name="choices" value="most" /> Quotes from top 2 authors with the most quotes
+		</fieldset>
+
+		<fieldset>
+			<legend>Search for quotes</legend>
+			<input type="radio" name="choices" value="substr" /> Quotes with substring
+			<input type="text" name="search" id="search" placeholder="Enter substring to search for ">
+		</fieldset>
+	</form>
+
+	<div id="author-quotes-container">
+	</div>
+
+	<footer>
+		Read more at
+		<a href="http://www.keepinspiring.me/famous-quotes-about-success" target="_blank">http://www.keepinspiring.me/famous-quotes-about-success</a>
+	</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/successQuotes.js"></script>
+</body>
+
+</html>

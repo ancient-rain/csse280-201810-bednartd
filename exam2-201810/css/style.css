@@ -1,0 +1,93 @@
+body {
+    background: #fff;
+    height: 100%;
+    font-size: 16px;
+    line-height: 2em;
+    color: #333;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    text-align: right;
+}
+
+label {
+    display: block;
+}
+
+fieldset {
+    background-color: #d3d3d3;
+    margin-top: 15px;
+}
+
+legend {
+    text-align:right;
+    background-color: white;
+    border:1px solid gray;
+}
+div.author-quote {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+div.author-quote:hover {
+    background-color: #ededed;
+}
+
+span.quote-author-name {
+    text-align: right;
+    font-weight: bold;
+    display: block;
+}
+
+footer {
+    clear: both;
+    background-color: #d3d3d3;
+    height: 33px;
+    padding: 5px;
+    width: inherit;
+    display: block;
+    color: #999;
+    position: static;
+    bottom: 0px;
+}
+
+footer a {
+    color:  #999;
+}
+
+.success-caption-text {
+    color: #999;
+    font-size: 12px;
+    margin: 0px 0px 8px 0px;
+    text-align: center;
+}
+
+input[name=search] {
+    width: 500px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('../images/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[name=search]:focus {
+    width: 97%;
+}
+form {
+    margin-bottom: 15px;
+}
