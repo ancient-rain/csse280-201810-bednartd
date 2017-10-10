@@ -33,16 +33,22 @@
 
     function offerExpires(today) {
         // Declare variables within the function for local scope
-        let expiryMsg = "today is a good day";
+        let expiryMsg = "This offer expirea a month from today on ";
 
         // Create arrays to hold the names of days / months
         const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
         // Collect the parts of the date to show on the page and calculate a month from today
+        today.setMonth(today.getMonth() + 1);
 
+        const dayName = dayNames[today.getDay()];
+        const monthName = monthNames[today.getMonth()];
+        const dateName = today.getDate();
+        const year = today.getFullYear();
 
         // Create the message
+        expiryMsg = `${expiryMsg} ${dayName} ${monthName} ${dateName} ${year}`;
 
         return expiryMsg; // Message to display to users
     }

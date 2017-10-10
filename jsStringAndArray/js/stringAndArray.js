@@ -14,17 +14,15 @@ function stringToArray(input) {
 }
 
 function abbreviateName(name) {
-    let nameList = name.split(' ');
-    let output = '';
-
-    let firstName = nameList[0];
-    let lastName = nameList[1].substring(0, 1) + '.';
+    const nameList = name.split(' ');
+    const firstName = nameList[0];
+    const lastName = nameList[1].substring(0, 1) + '.';
 
     return firstName + ' ' + lastName;
 }
 
 function titleCase(input) {
-    let list = input.split(' ');
+    const list = input.split(' ');
     let output = '';
 
     for (let i = 0; i < list.length; i++) {
@@ -41,6 +39,9 @@ function titleCase(input) {
 function firstN(array, n) {
     if (n) {
         if (n < array.length) {
+            if (n < 0) {
+                return [];
+            }
             return array.slice(0, n);
         }
         return array;
@@ -77,3 +78,35 @@ function move(array, from, to) {
     }
     return array;
 }
+
+console.log(isBlank(""));
+console.log(isBlank("hello"));
+console.log('');
+
+console.log(stringToArray("Robin Singh"));
+console.log('');
+
+console.log(abbreviateName("Robin Singh"));
+console.log('');
+
+console.log(titleCase('JavaScript exercises. python exercises.')); 
+console.log('');
+
+console.log(firstN([7, 9, 0, -2])); 
+console.log(firstN([],3));
+console.log(firstN([7, 9, 0, -2],3));
+console.log(firstN([7, 9, 0, -2],6));
+console.log(firstN([7, 9, 0, -2],-3));
+console.log('');
+
+console.log(lastN([7, 9, 0, -2])); 
+console.log(lastN([7,9,0,-2],3)); 
+console.log(lastN([7, 9, 0, -2],6));
+console.log('');
+
+const numbers= [10,20,10,40,50,60,70], target=50;
+console.log(sumPair(numbers, target));
+console.log('');
+
+console.log(move([10, 20, 30, 40, 50], 0, 2));
+console.log(move([10, 20, 30, 40, 50], -1, -2));

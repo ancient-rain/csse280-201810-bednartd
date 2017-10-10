@@ -115,7 +115,26 @@ function displayQuotes(quotes) {
  * See the search() function to determine when this function will run.
  */
 function displayShortestQuote() {
-    // TODO: complete this function. 
+    // DONE: complete this function.
+    let quotesContainer = document.getElementById('author-quotes-container');
+    const quotes = quotesContainer.childNodes;
+    const shortest = {
+        quote: quotes[0].childNodes[1].innerHTML,
+        author: quotes[0].childNodes[3].innerHTML
+    };
+
+    for (let i = 1; i < quotes.length; i++) {
+        const quote = quotes[i].childNodes[1].innerHTML;
+
+        if (quote.length < shortest.quote.length) {
+            const auth = quotes[i].childNodes[3].innerHTML;
+            shortest.quote = quote;
+            shortest.author = auth.substring(2);
+        }
+    }
+
+    quotesContainer = $('#author-quotes-container').empty();
+    displayQuote(quotesContainer, shortest);
 }
 
 /**

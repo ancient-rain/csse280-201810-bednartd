@@ -10,13 +10,46 @@
 
 <body>
 
+	<form class="well form-search" id="search-by-title">
+		<fieldset>
+			<legend>By Title</legend>
+			<div>
+				<label class="control-label" for="title">Title:</label>
+				<input class="input-small" type="text" name="title" id="title">
+			</div>
+			<div>
+				<label class="control-label" for="year">Year:</label>
+				<input class="input-small" type="text" name="year" id="year">
+			</div>
+			<div>
+				<label class="control-label" for="plot">Plot:</label>
+				<select name="plot">
+					<option value="short" selected>Short</option>
+					<option value="full">Full</option>
+				</select>
+			</div>
+			<div>
+				<label class="control-label" for="response">Response:</label>
+				<select name="response">
+						<option value="json" selected>JSON</option>
+						<option value="xml">XML</option>
+					</select>
+			</div>
+			<div>
+				<button type="button" id="search-by-title-button">Search</button>
+				<button type="reset" id="search-by-title-reset">Reset</button>
+			</div>
+		</fieldset>
+	</form>
 
 
 	<div id="search-by-title-response">
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="js/main.js"> </script>
+	<script src="js/main.js">
+
+	</script>
 </body>
 
 </html>
