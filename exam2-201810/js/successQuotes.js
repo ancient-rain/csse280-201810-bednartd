@@ -117,19 +117,17 @@ function displayQuotes(quotes) {
 function displayShortestQuote() {
     // DONE: complete this function.
     let quotesContainer = document.getElementById('author-quotes-container');
-    const quotes = quotesContainer.childNodes;
     const shortest = {
-        quote: quotes[0].childNodes[1].innerHTML,
-        author: quotes[0].childNodes[3].innerHTML
+        quote: ALL_QUOTES[0].quote,
+        author: ALL_QUOTES[0].author
     };
 
-    for (let i = 1; i < quotes.length; i++) {
-        const quote = quotes[i].childNodes[1].innerHTML;
+    for (let i = 1; i < ALL_QUOTES.length; i++) {
+        const quote = ALL_QUOTES[i].quote;
 
         if (quote.length < shortest.quote.length) {
-            const auth = quotes[i].childNodes[3].innerHTML;
             shortest.quote = quote;
-            shortest.author = auth.substring(2);
+            shortest.author = ALL_QUOTES[i].author;
         }
     }
 
@@ -165,7 +163,10 @@ function displayQuotesWithSubstring(thisString) {
  */
 
 function displayQuoteWithMostUniqueWords() {
-    // TODO: complete this function. 
+    // TODO: complete this function.
+    let quotesContainer = document.getElementById('author-quotes-container');   
+    
+    quotesContainer = $('#author-quotes-container').empty(); 
 }
 
 
