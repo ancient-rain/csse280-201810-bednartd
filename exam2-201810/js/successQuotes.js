@@ -116,7 +116,7 @@ function displayQuotes(quotes) {
  */
 function displayShortestQuote() {
     // DONE: complete this function.
-    let quotesContainer = document.getElementById('author-quotes-container');
+    const quotesContainer = $('#author-quotes-container').empty();
     const shortest = {
         quote: ALL_QUOTES[0].quote,
         author: ALL_QUOTES[0].author
@@ -131,7 +131,7 @@ function displayShortestQuote() {
         }
     }
 
-    quotesContainer = $('#author-quotes-container').empty();
+
     displayQuote(quotesContainer, shortest);
 }
 
@@ -142,9 +142,7 @@ function displayShortestQuote() {
  */
 function displayQuotesWithSubstring(thisString) {
     // DONE: complete this function. 
-    let quotesContainer = document.getElementById('author-quotes-container');   
-
-    quotesContainer = $('#author-quotes-container').empty();
+    const quotesContainer = $('#author-quotes-container').empty();
 
     for (let i = 0; i < ALL_QUOTES.length; i++) {
         const quote = ALL_QUOTES[i].quote;
@@ -163,13 +161,49 @@ function displayQuotesWithSubstring(thisString) {
  */
 
 function displayQuoteWithMostUniqueWords() {
-    // TODO: complete this function.
-    let quotesContainer = document.getElementById('author-quotes-container');   
+    // TODO: complete this function.   
+    const quotesContainer = $('#author-quotes-container').empty();
+    let count = 0;
+    const unique = {
+        quote: '',
+        author: ''
+    };
+
+    for (let i = 0; i < ALL_QUOTES.length; i++) {
+        const quote = ALL_QUOTES[i].quote;
+        const words = quote.split(/ /g);
+        const uniqueWords = [];
+
+        // remove punc. and convert to lowercase
+        for (let i = 0; i < words.length; i++) {
+            words[i] = removePunctuation(words[i]).toLowerCase();
+
+            // check to see that it isn't a special character that got removed
+            if (words[i] != '') {
+                let isUnique = true;
+                
+                // check to see if the word is unique
+                for (let j = 0; j < uniqueWords.length; j++) {
+                    if (words[i] == uniqueWords[j]) {
+                        isUnique = false;
+                    }
+                }
+
+                if (isUnique) {
+                    uniqueWords.push(words[i]);
+                }
+            }
+        }
+
+        if (count < uniqueWords.length) {
+            count = uniqueWords.length;
+            unique.quote = quote;
+            unique.author = ALL_QUOTES[i].author;
+        }
+    }
     
-    quotesContainer = $('#author-quotes-container').empty(); 
+    displayQuote(quotesContainer, unique);
 }
-
-
 
 /**
  * Question 4 Implement a function that displays quotes from the
@@ -192,8 +226,8 @@ function displayQuotesFromAuthorsWithMostQuotes(n) {
  */
 function compareByPropertyDescending(prop) {
     return (a, b) => {
-        if(a[prop] > b[prop]) return -1;
-        if(a[prop] < b[prop]) return 1;
+        if (a[prop] > b[prop]) return -1;
+        if (a[prop] < b[prop]) return 1;
         return 0;
     };
 }
@@ -204,29 +238,29 @@ function compareByPropertyDescending(prop) {
  * Use if needed.
  * */
 function removePunctuation(str) {
-    return str.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g,"");
+    return str.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "");
 }
 
 function search() {
     switch (userChoice) {
-    case 'all':
-        displayQuotes(ALL_QUOTES);
-        break;
-    case 'unique':
-        displayQuoteWithMostUniqueWords();
-        break;
-    case 'substr':
-        displayQuotesWithSubstring(searchString);
-        break;
-    case 'short':
-        displayShortestQuote();
-        break;
-    case 'most':
-        displayQuotesFromAuthorsWithMostQuotes(2);
-        break;
-    default:
-        displayQuotes(ALL_QUOTES);
-        break;
+        case 'all':
+            displayQuotes(ALL_QUOTES);
+            break;
+        case 'unique':
+            displayQuoteWithMostUniqueWords();
+            break;
+        case 'substr':
+            displayQuotesWithSubstring(searchString);
+            break;
+        case 'short':
+            displayShortestQuote();
+            break;
+        case 'most':
+            displayQuotesFromAuthorsWithMostQuotes(2);
+            break;
+        default:
+            displayQuotes(ALL_QUOTES);
+            break;
     }
 }
 
