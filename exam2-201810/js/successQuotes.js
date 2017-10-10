@@ -161,7 +161,7 @@ function displayQuotesWithSubstring(thisString) {
  */
 
 function displayQuoteWithMostUniqueWords() {
-    // TODO: complete this function.   
+    // DONE: complete this function.   
     const quotesContainer = $('#author-quotes-container').empty();
     let count = 0;
     const unique = {
@@ -174,14 +174,14 @@ function displayQuoteWithMostUniqueWords() {
         const words = quote.split(/ /g);
         const uniqueWords = [];
 
-        // remove punc. and convert to lowercase
+        // remove punctuation and convert to lowercase
         for (let i = 0; i < words.length; i++) {
             words[i] = removePunctuation(words[i]).toLowerCase();
 
             // check to see that it isn't a special character that got removed
             if (words[i] != '') {
                 let isUnique = true;
-                
+
                 // check to see if the word is unique
                 for (let j = 0; j < uniqueWords.length; j++) {
                     if (words[i] == uniqueWords[j]) {
@@ -201,7 +201,7 @@ function displayQuoteWithMostUniqueWords() {
             unique.author = ALL_QUOTES[i].author;
         }
     }
-    
+
     displayQuote(quotesContainer, unique);
 }
 
@@ -213,7 +213,7 @@ function displayQuoteWithMostUniqueWords() {
  * In this exam, n == 2;
  */
 function displayQuotesFromAuthorsWithMostQuotes(n) {
-    // TODO: complete this function. 
+    // TODO: complete this function.
 }
 
 /* This is a utility function that aids with sorting an array of objects 
@@ -243,30 +243,31 @@ function removePunctuation(str) {
 
 function search() {
     switch (userChoice) {
-        case 'all':
-            displayQuotes(ALL_QUOTES);
-            break;
-        case 'unique':
-            displayQuoteWithMostUniqueWords();
-            break;
-        case 'substr':
-            displayQuotesWithSubstring(searchString);
-            break;
-        case 'short':
-            displayShortestQuote();
-            break;
-        case 'most':
-            displayQuotesFromAuthorsWithMostQuotes(2);
-            break;
-        default:
-            displayQuotes(ALL_QUOTES);
-            break;
+    case 'all':
+        displayQuotes(ALL_QUOTES);
+        break;
+    case 'unique':
+        displayQuoteWithMostUniqueWords();
+        break;
+    case 'substr':
+        displayQuotesWithSubstring(searchString);
+        break;
+    case 'short':
+        displayShortestQuote();
+        break;
+    case 'most':
+        displayQuotesFromAuthorsWithMostQuotes(2);
+        break;
+    default:
+        displayQuotes(ALL_QUOTES);
+        break;
     }
 }
 
 function setup() {
     $('input:radio[name="choices"]').change(
         function () {
+            console.log('change');
             userChoice = $(this).val();
             if ($(this).is(':checked')) {
                 search();
@@ -279,6 +280,18 @@ function setup() {
      * also call the search() function. 
      * */
     // TODO: Implement your solution here
+    $('#search').on('focus', function () {
+        const radioBtns = $('input:radio[name="choices"]');
+        let searchString = $(this).val();
+
+        if (searchString.length < 1) {
+            searchString = undefined;
+        }
+
+        userChoice = 'substr';
+        radioBtns[4].checked = true;
+        search();
+    });
 
     $('#search').on('input', function () {
         searchString = $(this).val();
