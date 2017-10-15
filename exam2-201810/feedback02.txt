@@ -1,0 +1,5 @@
+10/13
+
+-3 This is case sensative which it should not be
+
+You could have just called displayQuotes(arr), where arr is an array of ALL_QUOTES desired. Then you wouldn't have to make the quotes container again and you would only call displayQuotes once vs displayQuote numerous times.
