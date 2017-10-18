@@ -1,0 +1,5 @@
+username: bednartd
+
+28/30
+
+-2 bug detected: The first tile of a row will go to the last position of last row
