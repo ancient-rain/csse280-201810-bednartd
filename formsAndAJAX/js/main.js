@@ -49,8 +49,8 @@
     }
 
     function displayMovie(data) {
-        // TODO: get all the properties
-        /* TODO: create outer div that you return.
+        // DONE: get all the properties
+        /* DONE: create outer div that you return.
             Append all the data to the outer div.
             Make sure it is formated to the picture
         */
@@ -123,6 +123,8 @@
         ratingsDiv.appendChild(ratingsFirst);
         ratingsDiv.appendChild(ratingsSecond);
         ratingsDiv.appendChild(ratingsThird);
+
+        responseDiv.innerHTML = '';
 
         responseDiv.appendChild(title);
         responseDiv.appendChild(year);
