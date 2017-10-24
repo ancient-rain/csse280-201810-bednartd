@@ -1,4 +1,4 @@
-Your name(s):
+Your name(s): Trevor Bednarek
 Whose submission should be graded?
 
 Instructions:
@@ -8,24 +8,24 @@ Solutions:
 
 1. Find one restaurant in the Staten Island borough.
 
-Query:
+Query: db.restaurants.findOne({"borough": "Staten Island"});
 
 
 2. Find the count of all the restaurants in the Bronx borough.
 
-Query:
+Query: db.restaurants.count({"borough": "Bronx"});
 
 
 
 3. Find the count of all the restaurants in zip code 11224 that serve American cuisine.
 
-Query:
+Query: db.restaurants.count({"cuisine: "American", "address.zipcode": "11224"});
 
 
 
 4. Find the count of all restaurants in the Manhattan borough with at least one grade with a score of 12. 
 
-Query:
+Query: db.restaurants.count({ "grades": { $elemMatch: { score: 12 } } }, { "borough": "Manhattan"}); or db.restaurants.count({ "grades.score": 12}, { "borough": "Manhattan"});
 
 
 
@@ -37,19 +37,19 @@ Query:
 
 6. Update the restaurant with restaurant_id = 40364920 by setting the cuisine to Italian.
 
-Query:
+Query: db.restaurants.update({"restaurant_id": "40364920"}, { $set: {"cuisine": "Italian"} });
 
 
 
 7. For the restaurant with restaurant_id = 40364920, use the positonal operator (https://docs.mongodb.com/v3.2/reference/operator/update/positional/) to change the grade with score == 2 such that the value of the score becomes 15.
 
-Query:
+Query: db.restaurants.update({"restaurant_id": "40364920","grades.score": 2}, { $set: {"grades.$.score": 15} });
 
 
 
 8. Remove the document with restaurant with restaurant_id = 40364920 from the restaurants collection.
 
-Query:
+Query: db.restaurants.remove({"restaurant_id": "40364920"});
 
 
 
