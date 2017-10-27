@@ -1,0 +1,8 @@
+Grade: 17/24
+
+3) -3 -> This returns 0 count. Need something like this instead: "cuisine": /American/
+
+4) -1 -> You have too many curly braces. All parameters should be within a single curly brace.
+    eg: {"grades.score":12, "borough":"Manhattan"}
+
+5) -3 -> Did not answer question. You need to check to make sure the grade is not greater than or less than 12.
