@@ -34,8 +34,33 @@ function createReview(req, res, book) {
 
 // TODO: Complete this function
 function deleteReview(req, res, book) {
-    let thisReviewIndex = -1; // HINT: might be helpful
-    handleError(new Error(), res, 'Could not delete Review', 400);
+    const thisReviewId = book.reviews.filter( (review) => {
+        return review._id == req.params.reviewid;
+    })[0]._id;
+    const thisReviewIndex = findReviewId(book, thisReviewId);
+    console.log(thisReviewIndex);
+    if (thisReviewIndex < 0) {
+        handleError(new Error(), res, 'Could not delete Review', 400);
+    } else {
+        book.reviews.splice(thisReviewIndex, 1);
+        book.save( (err, book) => {
+            if (err) {
+                handleError(err, res, 'Could not delete Review', 400);
+            } else {
+                res.json(book.reviews);
+            }
+        });
+    }
+}
+
+function findReviewId(book, reviewId) {
+    for (let i = 0; i < book.reviews.length; i++) {
+        const curReview = book.reviews[i];
+        if (reviewId == curReview._id) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 function updateReview(req, res, book) {
@@ -139,7 +164,17 @@ router.route('/:bookid/reviews/:reviewid')
     // Get book first, then use JavaScript to search for the review
     // Remove review from array and save book
     .delete( (req, res) => {
-        handleError(new Error(), res, 'GET error, problem retrieving data', 404);
+        if (req.params.bookid && req.params.reviewid) {
+            BOOK.findById(req.params.bookid, (err, book) => {
+                if (err) {
+                    handleError(err, res, 'Book Not Found', 404);
+                } else {
+                    deleteReview(req, res, book);
+                }
+            });
+        } else {
+            handleError(new Error(), res, 'GET error, problem retrieving data', 404);
+        }
     });
 
 module.exports = router;
