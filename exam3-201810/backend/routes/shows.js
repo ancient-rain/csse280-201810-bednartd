@@ -26,12 +26,21 @@ function handleError(err, res, msg, statusCode) {
     res.json(err);
 }
 
-/*  TODO: Create a member entry for the given show and update 
+/*  DONE: Create a member entry for the given show and update 
  *  show with new entry. Use JavaScript to populate the 
  *  members array with the new member entry.
  * */
 function createMember(req, res, show) {
-    handleError(new Error(), res, 'Could not add Member', 400);
+    const thisMember = req.body;
+    show.members.push(thisMember);
+
+    show.save( (err, show) => {
+        if (err) {
+            handleError(err, res, 'Could not add Member', 400);
+        } else {
+            res.json(show.members);
+        }
+    });
 }
 
 /*  TODO: Remove a member entry from the given show and save the show to 
@@ -115,10 +124,21 @@ router.route('/:showId')
     });
 
 router.route('/:showId/members')
-    // TODO: CREATE a new member entry for this show.
+    // DONE: CREATE a new member entry for this show.
     // Be sure to call handleError() and createMember() as appropriate
     .post( (req, res) => {
-        handleError(new Error('Not found error.'), res, 'Unable to fetch show to add member entry', 404);
+        if (req.params && req.params.showId) {
+            SHOW.findById(req.params.showId, (err, show) => {
+                if (err) {
+                    handleError(err, res, 'Show Not Found', 404);
+                } else {
+                    console.log('create');
+                    createMember(req, res, show);
+                }
+            });
+        } else {
+            handleError(new Error('Not found error.'), res, 'Unable to fetch show to add member entry', 404);
+        }
     });
 
 router.route('/:showId/members/:memberId')
