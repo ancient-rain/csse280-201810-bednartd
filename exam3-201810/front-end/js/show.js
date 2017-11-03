@@ -116,6 +116,7 @@
             dataType: 'JSON',
             success:  (data) => {
                 if (data) {
+                    console.log(data);
                     window.location.href = './show.html';
                 } else {
                     alert("Could not retrieve show from the back-end");

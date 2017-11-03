@@ -43,7 +43,7 @@ function createMember(req, res, show) {
     });
 }
 
-/*  TODO: Remove a member entry from the given show and save the show to 
+/*  DONE: Remove a member entry from the given show and save the show to 
  *  persist that change. 
  *  Consider using JavaScript to search for the member entry to delete.
  *  Be careful about how you compare object IDs.
@@ -90,15 +90,16 @@ function findMemberId(show, memberId) {
  * */
 function updateMember(req, res, show) {
     let thisMember;
-    console.log(req.body);
     if (show.members.length) {
         thisMember = show.members.filter( (member) => {
             return member._id == req.params.memberId;
         })[0];
+        console.log(thisMember, req.body);
 
         if (!thisMember) {
             handleError(new Error(), res, 'Not Found', 404);
         } else {
+            // thisMember = req.body;
             thisMember.name = req.body.name;
             thisMember.email = req.body.email;
             thisMember.note = req.body.note;
