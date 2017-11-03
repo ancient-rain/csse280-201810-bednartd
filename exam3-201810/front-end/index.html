@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Broadway Show Company</title>
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<h1>Broadway Shows</h1>
+		<p>The Broadway Show Company will be conducting a number of shows throughout the year.</p>
+		<p>Please note that the following events are free to members:</p>
+		<ul>
+			<li>The Lion King</li>
+			<li>Elf the Musical</li>
+			<li>Charlie and the Chocolate Factory</li>
+			<li>Wicked</li>
+		</ul>
+		<table id="all-broadway-shows">
+		</table>
+
+		<form>
+			<fieldset>
+				<legend>Register your interest</legend>
+				<p> Fields with <span class="required">*</span> are required.</p>
+				<p>
+					<label class="title" for="name">Your name:<span class="required">*</span></label>
+					 <input type="text" name="name" id="name"><br />
+					</p>
+					<p class="control">
+						<label class="title" for="email">Your email:<span class="required">*</span></label>
+					 	<input type="text" name="email" id="email">
+						 <span class="input-icon"></span>
+				</p>
+				<p>
+					<label for="show" class="title">Show of interest:<span class="required">*</span></label>
+					<select name="show" id="show">
+						<option value="The Lion King">The Lion King</option>
+						<option value="Elf the Musical">Elf the Musical</option>
+						<option value="Charlie and the Chocolate Factory">Charlie and the Chocolate Factory</option>
+						<option value="Wicked">Wicked</option>
+					</select>
+				</p>
+
+				<p>
+					<label for="location" class="title">Your closest center:<span class="required">*</span></label>
+					 <select name="location" id="location">
+						 <option value="New York">New York</option>
+						 <option value="Chicago">Chicago</option>
+						 <option value="San Francisco">San Francisco</option>
+					 </select>
+				</p>
+				<p>
+					 <label class="title" for="interest">Why you are interested?</label>
+					 <input type="textarea" name="interest" id="interest"><br />
+				</p>
+			</fieldset>
+			<div class="submit">
+				<input type="button" id="register" value="Register">
+			</div>
+		</form>
+
+		<script src="js/jquery-3.1.1.js"></script>
+		<script src="js/processDates.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+</html>

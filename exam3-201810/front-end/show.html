@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Broadway Show Company's showings</title>
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<h1>Upcoming Broadway Show</h1>
+		<p>This show will be conducted at the location and on the date noted below.</p>
+		<p>A list of members interested in attending this showing is listed below.</p>
+
+		<form id="update-form">
+			<fieldset>
+				<legend>Register your interest</legend>
+				<p> Fields with <span class="required">*</span> are required.</p>
+				<p>
+					<label class="title" for="name">Your name:<span class="required">*</span></label>
+					 <input type="text" name="name" id="name"><br />
+					</p>
+					<p class="control">
+						<label class="title" for="email">Your email:<span class="required">*</span></label>
+					 	<input type="text" name="email" id="email">
+						 <span class="input-icon"></span>
+				</p>
+				<p>
+					<label for="show" class="title">Show of interest:</label>
+					<select name="show" id="show" disabled>
+						<option value="Wicked">Wicked</option>
+						<option value="The Lion King">The Lion King</option>
+						<option value="Elf the Musical">Elf the Musical</option>
+						<option value="Charlie and the Chocolate Factory">Charlie and the Chocolate Factory</option>
+					</select>
+				</p>
+
+				<p>
+					<label for="location" class="title">Your closest center:</label>
+					 <select name="location" id="location" disabled>
+						 <option value="San Francisco">San Francisco</option>
+						 <option value="New York">New York</option>
+						 <option value="Chicago">Chicago</option>
+					 </select>
+				</p>
+				<p>
+					 <label class="title" for="interest">Why you are interested?</label>
+					 <input type="textarea" name="interest" id="interest"><br />
+				</p>
+			</fieldset>
+			<div class="submit">
+				<input type="button" id="update-registration" value="Update your interest">
+			</div>
+		</form>
+
+		<div id="container">
+		</div>	
+
+		<a href="index.html">Back to Index page</a>
+		
+		<script src="js/jquery-3.1.1.js"></script>
+		<script src="js/processDates.js"></script>
+		<script src="js/show.js"></script>
+	</body>
+</html>
