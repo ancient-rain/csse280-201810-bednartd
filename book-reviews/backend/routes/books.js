@@ -23,22 +23,29 @@ function handleError(err, res, msg, statusCode) {
 
 // TODO: Complete this function
 function createReview(req, res, book) {
-    let thisReview;
-    const err = new Error(); // Detete this when you check for errors
+    const thisReview = req.body;
+    book.reviews.push(thisReview);
+
     // Create an object to add to the array of reviews for this book.
     // add the object to the array using the push method, just a JS array of reviews
     // save the book and do error checking
-    handleError(err, res, 'Could not add Review', 400);
 
+    book.save( (err, book) => {
+        if (err) {
+            handleError(err, res, 'Could not add Review', 400);
+        } else {
+            res.json(book.reviews);
+        }
+    });
 }
 
-// TODO: Complete this function
+// DONE: Complete this function
 function deleteReview(req, res, book) {
     const thisReviewId = book.reviews.filter( (review) => {
         return review._id == req.params.reviewid;
     })[0]._id;
     const thisReviewIndex = findReviewId(book, thisReviewId);
-    console.log(thisReviewIndex);
+
     if (thisReviewIndex < 0) {
         handleError(new Error(), res, 'Could not delete Review', 400);
     } else {
@@ -129,7 +136,7 @@ router.route('/:bookid')
     });
 
 router.route('/:bookid/reviews')
-    // TODO CREATE a review for this book. Use JavaScript to update the reviews array.
+    // DONE CREATE a review for this book. Use JavaScript to update the reviews array.
     .post( (req, res) => {
         if (req.params && req.params.bookid) {
             BOOK.findById(req.params.bookid, (err, book) => {
@@ -160,7 +167,7 @@ router.route('/:bookid/reviews/:reviewid')
             handleError(new Error(), res, 'GET error, problem retrieving data', 404);
         }
     })
-    // TODO: DELETE single review for single book
+    // DONE: DELETE single review for single book
     // Get book first, then use JavaScript to search for the review
     // Remove review from array and save book
     .delete( (req, res) => {

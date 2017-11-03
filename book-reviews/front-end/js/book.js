@@ -132,12 +132,24 @@
         });
     }
 
-    // TODO complete this function to post a newly created review
+    // DONE complete this function to post a newly created review
     // This function is far from being complete, see updateReview for ideas
     function postReview(review) {
         $.ajax({
             url: apiUrl + book._id + '/reviews',
-            data: review
+            type: 'POST',
+            data: review,
+            dataType: 'JSON',
+            success: (data) => {
+                if (data) {
+                    window.location.href = "./book.html";
+                } else {
+                    console.log('Review could not be created');
+                }
+            },
+            error: (request, status, error) => {
+                console.log(error, status, request);
+            }
         });
     }
 
@@ -166,7 +178,7 @@
             type: 'DELETE',
             dataType: 'JSON',
             success:  () => {
-                window.location.href = "./book.html";
+                window.location.href = './book.html';
             },
             error:  (request, status, error) => {
                 console.log(error, status, request);
