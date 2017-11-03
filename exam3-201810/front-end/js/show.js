@@ -87,19 +87,45 @@
         });
     }
 
-    /*  TODO: Make AJAX call to delete member on the backend API.
+    /*  DONE: Make AJAX call to delete member on the backend API.
      *  Get the updated version of the show if update request is successful.
      * */
     function deleteMember(member) {
-        window.alert('Delete button clicked');
+        $.ajax({
+            url: `${apiUrl}${show._id}/members/${member._id}`,
+            type: 'DELETE',
+            dataType: 'JSON',
+            success:  () => {
+                window.location.href = './show.html';
+            },
+            error:  (request, status, error) => {
+                console.log(error, status, request);
+            }
+        });
     }
 
-    /*  TODO: Update the values of the member object. 
+    /*  DONE: Update the values of the member object. 
      *  Make AJAX call to request the update on the backend API.
      *  Get the updated version of the show if update request is successful.
      * */
     function updateMember(member) {
-        window.alert('Edit button clicked');
+        $.ajax({
+            url: `${apiUrl}${show._id}/members/${member._id}`,
+            type: 'PUT',
+            data: member,
+            dataType: 'JSON',
+            success:  (data) => {
+                if (data) {
+                    window.location.href = './show.html';
+                } else {
+                    alert("Could not retrieve show from the back-end");
+                }
+            },
+            error:  (request, status, error) => {
+                console.log(error, status, request);
+                alert(error, status, request);
+            }
+        });
     }
 
     $(document).ready( () => {

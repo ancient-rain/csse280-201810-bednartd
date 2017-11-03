@@ -51,15 +51,37 @@ function createMember(req, res, show) {
  *  before comparing them. 
  * */
 function deleteMember(req, res, show) {
-    let thisMemberIndex = -1;
-    if (show.members.length) {
-        // Do some work here;
-    } else {
+    const thisMemberId = show.members.filter( (member) => {
+        console.log(member._id, req.params.memberId);
+        return member._id == req.params.memberId;
+    })[0]._id;
+    const thisMemberIndex = findMemberId(show, thisMemberId);  
+    console.log(thisMemberId);
+    if (thisMemberIndex < 0) {
         handleError(new Error('Bad request error.'), res, 'Could not delete Member', 400);
+    } else {
+        show.members.splice(thisMemberIndex, 1);
+        show.save( (err, show) => {
+            if (err) {
+                handleError(err, res, 'Could not delete Review', 400);
+            } else {
+                res.json(show.members);
+            }
+        });
     }
 }
 
-/*  TODO: Update a member entry of the given show and save the show to 
+function findMemberId(show, memberId) {
+    for (let i = 0; i < show.members.length; i++) {
+        const curReview = show.members[i];
+        if (memberId == curReview._id) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+/*  DONE: Update a member entry of the given show and save the show to 
  *  persist that change. 
  *  Consider using JavaScript to search for the member entry to update.
  *  Be careful about how you compare object IDs.
@@ -68,8 +90,29 @@ function deleteMember(req, res, show) {
  * */
 function updateMember(req, res, show) {
     let thisMember;
+    console.log(req.body);
     if (show.members.length) {
-        // Do some work here
+        thisMember = show.members.filter( (member) => {
+            return member._id == req.params.memberId;
+        })[0];
+
+        if (!thisMember) {
+            handleError(new Error(), res, 'Not Found', 404);
+        } else {
+            thisMember.name = req.body.name;
+            thisMember.email = req.body.email;
+            thisMember.note = req.body.note;
+
+            show.save( (err, show) => {
+                if (err) {
+                    handleError(err, res, 'Could not update Show', 400);
+                } else {
+                    res.json(show.members.filter( (member) => {
+                        return member._id == req.params.memberId;
+                    })[0]);
+                }
+            });
+        }
     } else {
         handleError(new Error('Not found error.'), res, 'No Member to update', 400);
     }
@@ -132,7 +175,6 @@ router.route('/:showId/members')
                 if (err) {
                     handleError(err, res, 'Show Not Found', 404);
                 } else {
-                    console.log('create');
                     createMember(req, res, show);
                 }
             });
@@ -143,18 +185,39 @@ router.route('/:showId/members')
 
 router.route('/:showId/members/:memberId')
 
-    // TODO: UPDATE a single member entry for a single show.
+    // DONE: UPDATE a single member entry for a single show.
     // Hint: Get the show first. 
     // Be sure to call handleError() and updateMember() as appropriate.
     .put( (req, res) => {
-        handleError(new Error('Not found error'), res, 'Unable to fetch show/member to update', 404);
+        if (req.params.showId && req.params.memberId) {
+            SHOW.findById(req.params.showId, (err, show) => {
+                if (err) {
+                    handleError(err, res, 'Show Not Found', 404);
+                } else {
+                    updateMember(req, res, show);
+                }
+            });
+        } else {
+            handleError(new Error('Not found error'), res, 'Unable to fetch show/member to update', 404);
+        }
     })
 
-    // TODO: DELETE a single member entry for a single show.
+    // DONE: DELETE a single member entry for a single show.
     // Hint: Get the show first.
     // Be sure to call handleError() and deleteMember() as appropriate.
     .delete( (req, res) => {
-        handleError(new Error('Not found error'), res, 'Unable to fetch show/member to delete', 404);
+        if (req.params.showId && req.params.memberId) {
+            SHOW.findById(req.params.showId, (err, show) => {
+                if (err) {
+                    handleError(err, res, 'Show Not Found', 404);
+                } else {
+                    console.log('delete member');
+                    deleteMember(req, res, show);
+                }
+            });
+        } else {
+            handleError(new Error('Not found error'), res, 'Unable to fetch show/member to delete', 404);
+        }
     });
 
 module.exports = router;
