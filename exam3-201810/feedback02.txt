@@ -1,0 +1,4 @@
+Grade: 18/20
+
+-2: Never updated values of member object
+    Something like: member.name = $('#name').val();
