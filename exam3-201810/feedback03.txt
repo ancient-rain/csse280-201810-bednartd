@@ -1,0 +1,5 @@
+-1 In back end, some incorrect status codes, should use 204 for delete and 404 if object 
+not found.
+-0.5 shouldn't have datatype for delete ajax call
+
+18.5/20
