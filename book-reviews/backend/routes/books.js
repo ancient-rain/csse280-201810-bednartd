@@ -21,7 +21,7 @@ function handleError(err, res, msg, statusCode) {
     res.json({ message: err.status + ' ' + err }); 
 }
 
-// TODO: Complete this function
+// DONE: Complete this function
 function createReview(req, res, book) {
     const thisReview = req.body;
     book.reviews.push(thisReview);
@@ -115,8 +115,25 @@ router.route('/')
     .post((req, res) => {
         // This is just a start of what you need to do
         BOOK.create({
-            reviews: []  // Initially has no reviews
+            isbn: req.body.isbn,
+            title: req.body.title,
+            author: req.body.author,
+            coverImage: req.body.coverImage,
+            printType: req.body.printType,
+            pageCount: req.body.pageCount,
+            publisher: req.body.publisher,
+            publishedDate: req.body.publishedDate,
+            webReaderLink: req.body.webReaderLink,
+            reviews: [] // Initially has no reviews
+        },
+        (err, book) => {
+            if (err) {
+                handleError(err, res, 'Problem creating Book', 400);
+            } else {
+                res.json(book);
+            }
         });
+
     });
 
 router.route('/:bookid')

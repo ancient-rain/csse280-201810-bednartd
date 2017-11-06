@@ -165,11 +165,28 @@
         }
     }
 
-    // TODO:  Add book to system 
+    // DONE:  Add book to system 
     function postBook(book) {
         // Post the book found ny ISBN from the Google books API
         // Save book ID in browser session storage.
         // Redirect to the page that displays the newly added book.
+        $.ajax({
+            url: apiUrl,
+            type: 'POST',
+            data: book,
+            dataType: 'JSON',
+            success:  (data) => {
+                if (data) {
+                    saveBookIdAndRedirect(data);
+                } else {
+                    displayBooksError('Books could not be created.');
+                }
+            },
+            error:  (request, status, error) => {
+                displayBooksError('Error creating book in API data store.');
+                console.log(error, status, request);
+            }
+        });
     }
     
     function errorsOnFindingBook(message) {
