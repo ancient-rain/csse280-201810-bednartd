@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    const apiUrl = 'https://csse280-contactsapp-backend.herokuapp.com/contacts/';
+    const apiUrl = 'https://contacts-app-api-bednartd.herokuapp.com/contacts/';
     let contactsDisplayLocation;
     let AllContacts;
 
