@@ -36,19 +36,20 @@
     // Update contact and display name on input change
     function inputHandler(property, value) {
         console.log(value);
+        contact[property] = value;
         $('#contactName').text((contact.firstName || " ") + " " + (contact.lastName || " "));
     }
 
     // Add update button and delete button
     function addUpdateAndDeleteButtons(formElement) {
         formElement.append('<button type="submit" id="update-contact-button"> Update Contact </button>');
-        $('#update-contact-button').click( (e) => {
+        $('#update-contact-button').click((e) => {
             e.preventDefault(); // Prevent querystring from showing up in address bar
             saveContact();
         });
 
         formElement.append('<button type="submit" id="delete-contact-button"> Delete Contact </button>');
-        $('#delete-contact-button').click( (e) => {
+        $('#delete-contact-button').click((e) => {
             e.preventDefault(); // Prevent querystring from showing up in address bar
             deleteContact();
         });
@@ -57,7 +58,7 @@
     // Add create new contact button
     function addNewButton(formElement) {
         formElement.append('<button type="submit" id="new-contact-button"> Create New Contact </button>');
-        $('#new-contact-button').click( (e) => {
+        $('#new-contact-button').click((e) => {
             e.preventDefault(); // Prevent querystring from showing up in address bar
             createContact();
         });
@@ -67,7 +68,7 @@
     function createForm() {
         const formElement = $("[name='contactForm']").empty();
         // Add form elements and their event listeners
-        formFields.forEach( (formField) => {
+        formFields.forEach((formField) => {
             const labelElement = $("<label>")
                 .attr("for", formField.name)
                 .text(formField.des);
@@ -97,20 +98,66 @@
 
     // make ajax call to update this contact
     function saveContact() {
+        $.ajax({
+            url: apiUrl + contact._id,
+            type: 'PUT',
+            data: contact,
+            dataType: 'JSON',
+            success: (data) => {
+                if (data) {
+                    window.location.href = 'index.html';
+                }
+                else {
+                    console.log("Contact not found");
+                }
+            },
+            error: (request, status, error) => {
+                console.log(error, status, request);
+            }
+        });
         return;
     }
 
     // make ajax call to add new contact to db
     function createContact() {
+        $.ajax({
+            url: apiUrl,
+            type: 'POST',
+            data: contact,
+            dataType: 'JSON',
+            success: (data) => {
+                if (data) {
+                    window.location.href = 'index.html';
+                }
+                else {
+                    console.log("Contact not found");
+                }
+            },
+            error: (request, status, error) => {
+                console.log(error, status, request);
+            }
+        });
         return;
     }
 
     // make ajax call to delete this contact
     function deleteContact() {
+        $.ajax({
+            url: apiUrl + contact._id,
+            type: 'DELETE',
+            data: contact,
+            dataType: 'JSON',
+            success: () => {
+                window.location.href = 'index.html';
+            },
+            error: (request, status, error) => {
+                console.log(error, status, request);
+            }
+        });
         return;
     }
 
-    $(document).ready( () => {
+    $(document).ready(() => {
         //load contact data from browser storage if editing contact
         if (window.location.pathname.indexOf('update.html') > -1) {
             editForm = true;
@@ -122,3 +169,4 @@
     });
 
 })();
+
